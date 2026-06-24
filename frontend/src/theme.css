@@ -80,6 +80,7 @@ wa-page > [slot="footer"] {
 /* Cards */
 wa-card {
   border-color: var(--color-peach-7);
+  border-width: 2px;
   background-color: var(--color-peach-3);
 }
 

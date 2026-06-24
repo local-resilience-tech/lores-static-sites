@@ -12,7 +12,7 @@ export function App() {
   return (
     <wa-page>
       <div slot="header">
-        <h1>My App</h1>
+        <h1>Websites</h1>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem", padding: "1rem" }}>
