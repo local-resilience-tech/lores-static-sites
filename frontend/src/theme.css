@@ -1,68 +1,95 @@
 :root {
+  /* Pink scale */
+  --color-pink-0: #fff1f2;
+  --color-pink-1: #ffd9dc;
+  --color-pink-2: #ffc0c4;
+  --color-pink-3: #fc9d9a;
+  --color-pink-4: #fa7c7e;
+  --color-pink-5: #f95b68;
+  --color-pink-6: #fe4365;
+  --color-pink-7: #d83354;
+  --color-pink-8: #ae2040;
+  --color-pink-9: #7a0e28;
+
+  /* Peach scale */
+  --color-peach-0: #fff8f3;
+  --color-peach-1: #feedde;
+  --color-peach-2: #fde0c8;
+  --color-peach-3: #fbd4b2;
+  --color-peach-4: #f9cdad;
+  --color-peach-5: #f6bb94;
+  --color-peach-6: #f2a578;
+  --color-peach-7: #de8a58;
+  --color-peach-8: #be6a38;
+  --color-peach-9: #884520;
+
+  /* Cyan scale */
+  --color-cyan-0: #f3f6f4;
+  --color-cyan-1: #e3ede9;
+  --color-cyan-2: #d3e3dc;
+  --color-cyan-3: #c8c8a9;
+  --color-cyan-4: #b8c4a0;
+  --color-cyan-5: #9eba9a;
+  --color-cyan-6: #83af9b;
+  --color-cyan-7: #639080;
+  --color-cyan-8: #467063;
+  --color-cyan-9: #2c4e44;
+
   /* Palette */
-  --pink-dark: #fe4365;
-  --pink-light: #fc9d9a;
-  --peach: #f9cdad;
-  --cyan-light: #c8c8a9;
-  --cyan-dark: #83af9b;
   --white: #fff;
   --off-white: #fff8f5;
   --ink: #2e2e2e;
 
   /* Brand = dark pink → light pink scale */
-  --wa-color-brand-fill-quiet: color-mix(in srgb, var(--pink-light) 20%, transparent);
-  --wa-color-brand-fill-normal: color-mix(in srgb, var(--pink-light) 40%, transparent);
-  --wa-color-brand-fill-loud: var(--pink-dark);
-  --wa-color-brand-border-quiet: var(--pink-light);
-  --wa-color-brand-border-normal: var(--pink-dark);
-  --wa-color-brand-border-loud: var(--pink-dark);
-  --wa-color-brand-on-quiet: var(--pink-dark);
-  --wa-color-brand-on-normal: var(--pink-dark);
+  --wa-color-brand-fill-quiet: color-mix(in srgb, var(--color-pink-3) 20%, transparent);
+  --wa-color-brand-fill-normal: color-mix(in srgb, var(--color-pink-3) 40%, transparent);
+  --wa-color-brand-fill-loud: var(--color-pink-6);
+  --wa-color-brand-border-quiet: var(--color-pink-3);
+  --wa-color-brand-border-normal: var(--color-pink-6);
+  --wa-color-brand-border-loud: var(--color-pink-6);
+  --wa-color-brand-on-quiet: var(--color-pink-6);
+  --wa-color-brand-on-normal: var(--color-pink-6);
   --wa-color-brand-on-loud: var(--white);
-  --wa-color-focus: var(--pink-dark);
+  --wa-color-focus: var(--color-pink-6);
 
   /* Page background */
-  --wa-color-surface-default: var(--off-white);
-  --wa-color-surface-lowered: var(--peach);
-  --wa-color-surface-raised: var(--white);
-  --wa-color-surface-border: var(--pink-light);
+  --wa-color-surface-default: var(--color-cyan-3);
+  --wa-color-surface-lowered: var(--color-cyan-4);
+  --wa-color-surface-raised: var(--color-cyan-2);
+  --wa-color-surface-border: var(--color-cyan-6);
 
   /* Text */
   --wa-color-text-normal: var(--ink);
-  --wa-color-text-quiet: var(--cyan-dark);
-  --wa-color-text-link: var(--pink-dark);
+  --wa-color-text-quiet: var(--color-cyan-6);
+  --wa-color-text-link: var(--color-pink-6);
 }
 
 /* Header bar */
 wa-page > [slot="header"] {
-  background-color: var(--pink-dark);
+  background-color: var(--color-pink-6);
   color: var(--white);
+  border-bottom: 8px solid var(--color-pink-3);
 }
 
 /* Footer bar */
-wa-page::part(footer) {
-  background-color: var(--cyan-dark);
-  color: var(--white);
-}
-
 wa-page > [slot="footer"] {
-  background-color: var(--cyan-dark);
+  background-color: var(--color-cyan-6);
   color: var(--white);
 }
 
 /* Cards */
-wa-card::part(base) {
-  border-color: var(--pink-light);
-  background-color: var(--white);
+wa-card {
+  border-color: var(--color-peach-7);
+  background-color: var(--color-peach-3);
 }
 
 wa-card::part(header) {
-  background-color: var(--peach);
+  background-color: var(--color-peach-4);
   color: var(--ink);
-  border-bottom-color: var(--pink-light);
+  border-bottom-color: var(--color-peach-5);
 }
 
 wa-card::part(footer) {
-  background-color: var(--cyan-light);
-  border-top-color: var(--pink-light);
+  background-color: var(--color-peach-2);
+  border-top-color: var(--color-peach-5);
 }
