@@ -1,0 +1,68 @@
+:root {
+  /* Palette */
+  --pink-dark: #fe4365;
+  --pink-light: #fc9d9a;
+  --peach: #f9cdad;
+  --cyan-light: #c8c8a9;
+  --cyan-dark: #83af9b;
+  --white: #fff;
+  --off-white: #fff8f5;
+  --ink: #2e2e2e;
+
+  /* Brand = dark pink → light pink scale */
+  --wa-color-brand-fill-quiet: color-mix(in srgb, var(--pink-light) 20%, transparent);
+  --wa-color-brand-fill-normal: color-mix(in srgb, var(--pink-light) 40%, transparent);
+  --wa-color-brand-fill-loud: var(--pink-dark);
+  --wa-color-brand-border-quiet: var(--pink-light);
+  --wa-color-brand-border-normal: var(--pink-dark);
+  --wa-color-brand-border-loud: var(--pink-dark);
+  --wa-color-brand-on-quiet: var(--pink-dark);
+  --wa-color-brand-on-normal: var(--pink-dark);
+  --wa-color-brand-on-loud: var(--white);
+  --wa-color-focus: var(--pink-dark);
+
+  /* Page background */
+  --wa-color-surface-default: var(--off-white);
+  --wa-color-surface-lowered: var(--peach);
+  --wa-color-surface-raised: var(--white);
+  --wa-color-surface-border: var(--pink-light);
+
+  /* Text */
+  --wa-color-text-normal: var(--ink);
+  --wa-color-text-quiet: var(--cyan-dark);
+  --wa-color-text-link: var(--pink-dark);
+}
+
+/* Header bar */
+wa-page > [slot="header"] {
+  background-color: var(--pink-dark);
+  color: var(--white);
+}
+
+/* Footer bar */
+wa-page::part(footer) {
+  background-color: var(--cyan-dark);
+  color: var(--white);
+}
+
+wa-page > [slot="footer"] {
+  background-color: var(--cyan-dark);
+  color: var(--white);
+}
+
+/* Cards */
+wa-card::part(base) {
+  border-color: var(--pink-light);
+  background-color: var(--white);
+}
+
+wa-card::part(header) {
+  background-color: var(--peach);
+  color: var(--ink);
+  border-bottom-color: var(--pink-light);
+}
+
+wa-card::part(footer) {
+  background-color: var(--cyan-light);
+  border-top-color: var(--pink-light);
+}
