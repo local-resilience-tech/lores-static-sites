@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "@awesome.me/webawesome/dist/components/button/button.js";
-import "@awesome.me/webawesome/dist/components/card/card.js";
 import "@awesome.me/webawesome/dist/components/dialog/dialog.js";
 import "@awesome.me/webawesome/dist/components/page/page.js";
 import { AddWebsiteForm } from "./components/AddWebsiteForm";
+import { WebsiteList } from "./components/WebsiteList";
 
 type Site = { name: string; description: string };
 
@@ -31,14 +31,7 @@ export function App() {
         </wa-button>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem", padding: "1rem" }}>
-        {sites.map((site, i) => (
-          <wa-card key={i}>
-            <strong slot="header">{site.name}</strong>
-            <p>{site.description}</p>
-          </wa-card>
-        ))}
-      </div>
+      <WebsiteList sites={sites} />
 
       <wa-dialog label="Add a New Website" open={showForm || undefined} onwa-after-hide={() => setShowForm(false)}>
         <AddWebsiteForm onSubmit={handleAdd} onCancel={() => setShowForm(false)} />
