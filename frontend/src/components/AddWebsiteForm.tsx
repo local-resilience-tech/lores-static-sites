@@ -20,11 +20,11 @@ export function AddWebsiteForm({ onSubmit, onCancel }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "1rem", paddingBottom: "1rem" }}>
+      <div className="wa-stack wa-gap-m" style={{ paddingBottom: "1rem" }}>
         <wa-input label="Website Name" required value={name} onInput={(e: any) => setName(e.target.value)} />
         <wa-textarea label="Description" value={description} onInput={(e: any) => setDescription(e.target.value)} />
       </div>
-      <div slot="footer" style={{ display: "flex", gap: "0.5rem", justifyContent: "flex-end" }}>
+      <div slot="footer" className="wa-cluster wa-gap-xs wa-justify-content-end">
         <wa-button type="button" onClick={onCancel}>
           Cancel
         </wa-button>

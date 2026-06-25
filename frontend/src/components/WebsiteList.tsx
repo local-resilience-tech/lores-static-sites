@@ -1,3 +1,4 @@
+import type React from "react";
 import "@awesome.me/webawesome/dist/components/card/card.js";
 
 type Site = { name: string; description: string };
@@ -8,7 +9,7 @@ type Props = {
 
 export function WebsiteList({ sites }: Props) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1rem", padding: "1rem" }}>
+    <div className="wa-grid wa-gap-m" style={{ "--min-column-size": "18rem", padding: "1rem" } as React.CSSProperties}>
       {sites.map((site, i) => (
         <wa-card key={i}>
           <strong slot="header">{site.name}</strong>

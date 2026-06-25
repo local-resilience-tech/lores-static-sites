@@ -15,3 +15,7 @@ To run:
 ```bash
 just dev
 ```
+
+## Style guide
+
+- Prefer Web Awesome's layout utility classes (`wa-stack`, `wa-cluster`, `wa-grid`, `wa-split`, `wa-gap-*`, etc.) over hand-written flexbox/grid or inline styles.

@@ -24,7 +24,7 @@ export function App() {
 
   return (
     <wa-page>
-      <div slot="header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div slot="header" className="wa-split">
         <h1 style={{ margin: 0 }}>Websites</h1>
         <wa-button variant="brand" onClick={() => setShowForm(true)}>
           Add Website
