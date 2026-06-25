@@ -2,6 +2,7 @@ import { useState } from "react";
 import "@awesome.me/webawesome/dist/components/button/button.js";
 import "@awesome.me/webawesome/dist/components/input/input.js";
 import "@awesome.me/webawesome/dist/components/textarea/textarea.js";
+import styles from "./websites.module.css";
 
 type Props = {
   onSubmit: (site: { name: string; description: string }) => void;
@@ -20,7 +21,7 @@ export function AddWebsiteForm({ onSubmit, onCancel }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="wa-stack wa-gap-m" style={{ paddingBottom: "1rem" }}>
+      <div className={`wa-stack wa-gap-m ${styles.formFields}`}>
         <wa-input label="Website Name" required value={name} onInput={(e: any) => setName(e.target.value)} />
         <wa-textarea label="Description" value={description} onInput={(e: any) => setDescription(e.target.value)} />
       </div>

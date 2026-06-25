@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "@awesome.me/webawesome/dist/components/button/button.js";
 import "@awesome.me/webawesome/dist/components/dialog/dialog.js";
-import "@awesome.me/webawesome/dist/components/page/page.js";
-import { AddWebsiteForm } from "./components/AddWebsiteForm";
-import { WebsiteList } from "./components/WebsiteList";
+import { Layout } from "./components/Layout";
+import { AddWebsiteForm } from "./components/websites/AddWebsiteForm";
+import { WebsiteList } from "./components/websites/WebsiteList";
 
 type Site = { name: string; description: string };
 
@@ -23,23 +23,20 @@ export function App() {
   }
 
   return (
-    <wa-page>
-      <div slot="header" className="wa-split">
-        <h1 style={{ margin: 0 }}>Websites</h1>
+    <Layout
+      title="Websites"
+      headerActions={
         <wa-button variant="brand" onClick={() => setShowForm(true)}>
           Add Website
         </wa-button>
-      </div>
-
+      }
+      footer={<p>Footer content goes here.</p>}
+    >
       <WebsiteList sites={sites} />
 
       <wa-dialog label="Add a New Website" open={showForm || undefined} onwa-after-hide={() => setShowForm(false)}>
         <AddWebsiteForm onSubmit={handleAdd} onCancel={() => setShowForm(false)} />
       </wa-dialog>
-
-      <div slot="footer">
-        <p>Footer content goes here.</p>
-      </div>
-    </wa-page>
+    </Layout>
   );
 }

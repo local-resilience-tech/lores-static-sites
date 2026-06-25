@@ -1,0 +1,8 @@
+.formFields {
+  padding-block-end: var(--wa-space-m);
+}
+
+.grid {
+  --min-column-size: 18rem;
+  padding: var(--wa-space-m);
+}
