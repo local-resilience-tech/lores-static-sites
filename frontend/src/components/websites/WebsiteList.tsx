@@ -3,10 +3,10 @@ import "@awesome.me/webawesome/dist/components/button/button.js";
 import "@awesome.me/webawesome/dist/components/icon/icon.js";
 import styles from "./websites.module.css";
 
-type Site = { name: string; description: string };
+type Website = { name: string; description: string };
 
 type Props = {
-  sites: Site[];
+  sites: Website[];
   onEdit: (index: number) => void;
 };
 

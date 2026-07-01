@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------
  */
 
-export interface Site {
+export interface Website {
   description: string;
   name: string;
 }
@@ -202,11 +202,11 @@ export class Api<
     /**
      * No description
      *
-     * @name SitesIndex
+     * @name WebsitesIndex
      * @request GET:/api/websites
      */
-    sitesIndex: (params: RequestParams = {}) =>
-      this.request<Site[], any>({
+    websitesIndex: (params: RequestParams = {}) =>
+      this.request<Website[], any>({
         path: `/api/websites`,
         method: "GET",
         format: "json",

@@ -15,6 +15,14 @@ import "@awesome.me/webawesome/dist/components/button/button.js";
 
 The stylesheet is imported globally in `main.tsx`. Do not add it per-component.
 
+## API Client
+
+`frontend/src/api/Api.ts` is auto-generated. **Never edit it manually.** To regenerate it, run the swagger command (requires the backend to be running):
+
+```sh
+just gen-api
+```
+
 ### Agent Skills
 
 Refer to the Web Awesome agent skills for component APIs and design guidance:

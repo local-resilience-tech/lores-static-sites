@@ -22,6 +22,7 @@ pub struct AppState {
     pub panda: Arc<Mutex<PandaClient>>,
     pub channels: Arc<Mutex<HashMap<[u8; 32], broadcast::Sender<Vec<u8>>>>>,
     pub app_namespace: String,
+    pub websites: Vec<public_api::websites::Website>,
 }
 
 #[tokio::main]
@@ -41,6 +42,20 @@ async fn main() {
         panda,
         channels: Arc::new(Mutex::new(HashMap::new())),
         app_namespace: APP_NAMESPACE.to_string(),
+        websites: vec![
+            public_api::websites::Website {
+                name: "Example Site".to_string(),
+                description: "A static site hosted on Lores.".to_string(),
+            },
+            public_api::websites::Website {
+                name: "My Blog".to_string(),
+                description: "Personal blog built with a static generator.".to_string(),
+            },
+            public_api::websites::Website {
+                name: "Portfolio".to_string(),
+                description: "Design and development portfolio.".to_string(),
+            },
+        ],
     };
 
     let (api_router, api) = OpenApiRouter::with_openapi(ApiDoc::openapi())

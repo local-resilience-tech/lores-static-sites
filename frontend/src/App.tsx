@@ -4,17 +4,17 @@ import "@awesome.me/webawesome/dist/components/dialog/dialog.js";
 import { Layout } from "./components/Layout";
 import { WebsiteForm } from "./components/websites/WebsiteForm";
 import { WebsiteList } from "./components/websites/WebsiteList";
-import { Api, Site } from "./api/Api";
+import { Api, Website } from "./api/Api";
 
 const api = new Api();
 
 export function App() {
-  const [sites, setSites] = useState<Site[]>([]);
+  const [sites, setSites] = useState<Website[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [editIndex, setEditIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    api.api.sitesIndex().then((response) => setSites(response.data));
+    api.api.websitesIndex().then((response) => setSites(response.data));
   }, []);
 
   function handleAdd(site: { name: string; description: string }) {
