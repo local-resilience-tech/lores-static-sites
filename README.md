@@ -16,6 +16,8 @@ To run:
 just dev
 ```
 
+Swagger UI is available at **http://localhost:3000/swagger-ui** when the backend is running.
+
 ## Style guide
 
 - Prefer Web Awesome's layout utility classes (`wa-stack`, `wa-cluster`, `wa-grid`, `wa-split`, `wa-gap-*`, etc.) over hand-written flexbox/grid or inline styles.

@@ -1,8 +1,9 @@
 use axum::{
     extract::ws::{Message, WebSocket},
-    extract::{Path, State, WebSocketUpgrade},
+    extract::{Path, WebSocketUpgrade},
     http::StatusCode,
     response::{IntoResponse, Response},
+    Extension,
 };
 use futures_util::StreamExt;
 use lores_p2panda_client::PandaClient;
@@ -14,7 +15,7 @@ use crate::AppState;
 pub async fn handler(
     Path(region_id_hex): Path<String>,
     ws: WebSocketUpgrade,
-    State(state): State<AppState>,
+    Extension(state): Extension<AppState>,
 ) -> Response {
     let region_id = match parse_hex_32(&region_id_hex) {
         Some(id) => id,

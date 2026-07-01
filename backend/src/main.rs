@@ -1,12 +1,16 @@
-use axum::{routing::get, Router};
+use axum::routing::get;
 use lores_p2panda_client::PandaClient;
 use std::collections::HashMap;
 use std::net::SocketAddr;
 use std::sync::Arc;
 use tokio::sync::{broadcast, Mutex};
+use utoipa::OpenApi;
+use utoipa_axum::router::OpenApiRouter;
+use utoipa_swagger_ui::SwaggerUi;
 
 use crate::static_server::frontend_handler;
 
+mod public_api;
 mod realtime;
 mod static_server;
 
@@ -22,6 +26,10 @@ pub struct AppState {
 
 #[tokio::main]
 async fn main() {
+    #[derive(OpenApi)]
+    #[openapi()]
+    struct ApiDoc;
+
     let panda_grpc_addr =
         std::env::var("PANDA_GRPC_ADDR").unwrap_or_else(|_| PANDA_GRPC_ADDR_DEFAULT.to_string());
 
@@ -35,11 +43,21 @@ async fn main() {
         app_namespace: APP_NAMESPACE.to_string(),
     };
 
-    let app = Router::new()
-        .route("/test", get(|| async { "ok" }))
-        .route("/ws/:region_id", get(realtime::handler))
+    let (api_router, api) = OpenApiRouter::with_openapi(ApiDoc::openapi())
+        .nest("/api", public_api::router())
+        .split_for_parts();
+
+    // Write openapi.json to disk
+    let openapi_json = api
+        .to_pretty_json()
+        .expect("failed to serialize OpenAPI spec");
+    std::fs::write("openapi.json", &openapi_json).expect("failed to write openapi.json");
+
+    let app = api_router
+        .merge(SwaggerUi::new("/swagger-ui").url("/api-docs/openapi.json", api.clone()))
+        .route("/ws/{region_id}", get(realtime::handler))
         .fallback_service(get(frontend_handler))
-        .with_state(state);
+        .layer(axum::Extension(state));
 
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
     println!("backend listening on http://{addr}");

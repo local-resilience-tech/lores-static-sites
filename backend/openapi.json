@@ -1,0 +1,52 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "lores-static-sites",
+    "description": "",
+    "license": {
+      "name": ""
+    },
+    "version": "0.1.4"
+  },
+  "paths": {
+    "/api/websites": {
+      "get": {
+        "operationId": "sites_index",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Site"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Site": {
+        "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
