@@ -18,8 +18,10 @@ export function App() {
   }, []);
 
   function handleAdd(site: { name: string; description: string }) {
-    setSites((prev) => [...prev, site]);
-    setShowForm(false);
+    api.api.createWebsite(site).then((response) => {
+      setSites((prev) => [...prev, response.data]);
+      setShowForm(false);
+    });
   }
 
   function handleEdit(site: { name: string; description: string }) {

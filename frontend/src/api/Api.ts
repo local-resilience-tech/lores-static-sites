@@ -10,6 +10,11 @@
  * ---------------------------------------------------------------
  */
 
+export interface CreateWebsiteData {
+  description: string;
+  name: string;
+}
+
 export interface Website {
   description: string;
   name: string;
@@ -209,6 +214,22 @@ export class Api<
       this.request<Website[], any>({
         path: `/api/websites`,
         method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name CreateWebsite
+     * @request POST:/api/websites
+     */
+    createWebsite: (data: CreateWebsiteData, params: RequestParams = {}) =>
+      this.request<Website, any>({
+        path: `/api/websites`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),
