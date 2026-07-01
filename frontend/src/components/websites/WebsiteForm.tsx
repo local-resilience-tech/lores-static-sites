@@ -7,11 +7,13 @@ import styles from "./websites.module.css";
 type Props = {
   onSubmit: (site: { name: string; description: string }) => void;
   onCancel: () => void;
+  initialValues?: { name: string; description: string };
+  submitLabel?: string;
 };
 
-export function AddWebsiteForm({ onSubmit, onCancel }: Props) {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+export function WebsiteForm({ onSubmit, onCancel, initialValues, submitLabel = "Add Website" }: Props) {
+  const [name, setName] = useState(initialValues?.name ?? "");
+  const [description, setDescription] = useState(initialValues?.description ?? "");
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -30,7 +32,7 @@ export function AddWebsiteForm({ onSubmit, onCancel }: Props) {
           Cancel
         </wa-button>
         <wa-button type="submit" variant="brand">
-          Add Website
+          {submitLabel}
         </wa-button>
       </div>
     </form>

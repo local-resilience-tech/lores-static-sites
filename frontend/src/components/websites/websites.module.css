@@ -6,3 +6,9 @@
   --min-column-size: 18rem;
   padding: var(--wa-space-m);
 }
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
