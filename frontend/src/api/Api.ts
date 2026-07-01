@@ -203,16 +203,16 @@ export class HttpClient<SecurityDataType = unknown> {
 export class Api<
   SecurityDataType extends unknown,
 > extends HttpClient<SecurityDataType> {
-  api = {
+  publicApi = {
     /**
      * No description
      *
      * @name WebsitesIndex
-     * @request GET:/api/websites
+     * @request GET:/public_api/websites
      */
     websitesIndex: (params: RequestParams = {}) =>
       this.request<Website[], any>({
-        path: `/api/websites`,
+        path: `/public_api/websites`,
         method: "GET",
         format: "json",
         ...params,
@@ -222,11 +222,11 @@ export class Api<
      * No description
      *
      * @name CreateWebsite
-     * @request POST:/api/websites
+     * @request POST:/public_api/websites
      */
     createWebsite: (data: CreateWebsiteData, params: RequestParams = {}) =>
       this.request<Website, any>({
-        path: `/api/websites`,
+        path: `/public_api/websites`,
         method: "POST",
         body: data,
         type: ContentType.Json,

@@ -14,11 +14,11 @@ export function App() {
   const [editIndex, setEditIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    api.api.websitesIndex().then((response) => setSites(response.data));
+    api.publicApi.websitesIndex().then((response) => setSites(response.data));
   }, []);
 
   function handleAdd(site: { name: string; description: string }) {
-    api.api.createWebsite(site).then((response) => {
+    api.publicApi.createWebsite(site).then((response) => {
       setSites((prev) => [...prev, response.data]);
       setShowForm(false);
     });

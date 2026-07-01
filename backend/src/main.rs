@@ -59,7 +59,7 @@ async fn main() {
     };
 
     let (api_router, api) = OpenApiRouter::with_openapi(ApiDoc::openapi())
-        .nest("/api", public_api::router())
+        .nest("/public_api", public_api::router())
         .split_for_parts();
 
     // Write openapi.json to disk
