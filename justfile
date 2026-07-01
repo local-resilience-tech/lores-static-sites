@@ -4,6 +4,9 @@ setup:
 dev:
     mprocs
 
+gen-api:
+    cd frontend && npm run swagger
+
 release:
     npm run release
 

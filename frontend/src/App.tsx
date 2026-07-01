@@ -1,22 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "@awesome.me/webawesome/dist/components/button/button.js";
 import "@awesome.me/webawesome/dist/components/dialog/dialog.js";
 import { Layout } from "./components/Layout";
 import { WebsiteForm } from "./components/websites/WebsiteForm";
 import { WebsiteList } from "./components/websites/WebsiteList";
+import { Api, Site } from "./api/Api";
 
-type Site = { name: string; description: string };
-
-const initialSites: Site[] = [
-  { name: "Example Site", description: "A static site hosted on Lores." },
-  { name: "My Blog", description: "Personal blog built with a static generator." },
-  { name: "Portfolio", description: "Design and development portfolio." },
-];
+const api = new Api();
 
 export function App() {
-  const [sites, setSites] = useState<Site[]>(initialSites);
+  const [sites, setSites] = useState<Site[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [editIndex, setEditIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    api.api.sitesIndex().then((response) => setSites(response.data));
+  }, []);
 
   function handleAdd(site: { name: string; description: string }) {
     setSites((prev) => [...prev, site]);

@@ -8,6 +8,12 @@ export default defineConfig({
       "/api": {
         target: "http://localhost:3000",
       },
+      "/api-docs": {
+        target: "http://localhost:3000",
+      },
+      "/swagger-ui": {
+        target: "http://localhost:3000",
+      },
       "/ws": {
         target: "ws://localhost:3000",
         ws: true,

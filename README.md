@@ -16,7 +16,15 @@ To run:
 just dev
 ```
 
-Swagger UI is available at **http://localhost:3000/swagger-ui** when the backend is running.
+Swagger UI is available at **http://localhost:5173/swagger-ui** when the backend is running.
+
+To generate the frontend API client (requires the backend to be running on port 3000):
+
+```bash
+just gen-api
+```
+
+This will output generated TypeScript files to `frontend/src/api/`.
 
 ## Style guide
 
